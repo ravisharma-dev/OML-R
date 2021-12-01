@@ -37,31 +37,37 @@
 
 # 1. Point browser to RStudio Web.
 
+````
 http://<ip-address>:8787
+````
 
 # Note: Alternatively, you can use RStudio Desktop.
 
 # 2. Connect to RStudio using credentials “oracle/<RStudio-Password-Provided>”
  
 # 3. Load ORE library 
- 
+
+````
 library(ORE)
 library(dplyr)
 library(OREdplyr)
 library(caTools)
-            
+
 options(ore.warn.order=FALSE)
- 
+````
+
 # Note: OML4R is the new name for Oracle R Enterprise.
 
 # 4. Connect to the 21c database and check connectivity
  
+````
 ore.connect(user="oml_user",
             conn_string="MLPDB1",
             host=“<“hostname>,
             password=“<“password>,
             all=TRUE)
- 
+ ````
+ 
 # Note: You connect to the schema. Port defaults to 1521. 
 # By specifying “all = TRUE”, proxy objects are loaded for all tables in the target schema.  
 # Use ore.disconnect() to explicitly disconnect.
