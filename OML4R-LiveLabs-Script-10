@@ -187,6 +187,7 @@ summary(prc0)
 **Task 5: Prepare data for model creation **
  
 # 23. Create row names. You can use the primary key of a database table to order an ore.frame object.   
+
 set.seed(1)
 head(CUST_INSUR_LTV)
 CIL <- CUST_INSUR_LTV
@@ -209,7 +210,10 @@ dim(CIL.test)
 class(CIL.test) 
 
 # **Task 6: Build ML models **
- 
+
+
+# Use a REGRESSION Model for LTV Prediction
+
 # 25. Build regression model to predict customer LTV using the training data set
  
 oreFit1 <- ore.odmGLM(LTV ~ N_MORTGAGES + MORTGAGE_AMOUNT + N_OF_DEPENDENTS, data = CIL.train, ridge=TRUE)
@@ -251,11 +255,13 @@ ore.rmse(localPredictions$PREDICTION, localPredictions$LTV)
 #Based on RMSE we can compare the two different models with each other and be able to identify which model fits the data better.
 
 
-# CLASSIFICATION for LTV_BIN
+# Use a CLASSIFICATION Model for LTV_BIN Prediction
 
 # 29. Exclude highly correlated columns from the data frame
 
-
+CIL <- CUST_INSUR_LTV
+CIL$LTV_BIN <- NULL
+dim(CIL)
 
 # 30. Build regression model to predict customer LTV_BIN assignment using the training data set
  
@@ -286,3 +292,4 @@ class(predB)
 confusion.matrix
 summary(confusion.matrix)
 
+# Observe and evaluate accuracy of predictions
