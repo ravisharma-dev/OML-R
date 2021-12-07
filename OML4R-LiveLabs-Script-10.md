@@ -242,8 +242,9 @@ Note: Principal Component Analysis (PCA) is a technique used for exploratory dat
 
 
  
-**Task 5: Prepare data for model creation **
+** Task 5: Prepare data for model creation **
  
+
 23. Create row names. You can use the primary key of a database table to order an ore.frame object.   
 
 ````
@@ -272,7 +273,7 @@ class(CIL.test)
 ````
 
             
-**Task 6: Build ML models **
+** Task 6: Build ML models **
 
 
 Use a REGRESSION Model for LTV Prediction
