@@ -140,7 +140,7 @@ summary(CUST_INSUR_LTV[,1:20])
  Note: You can specify one or more, or a range of columns to see the summary of only those columns.
 
  
-11. Statistical exploration: Check min(), max(), unique() etc. for different attributes
+11. Statistical exploration: Check min(), max(), unique() etc. for different attributes in the given table (ore.frame)
 
 ````
 min(CUST_INSUR_LTV$SALARY)
@@ -149,13 +149,13 @@ unique(CUST_INSUR_LTV$N_OF_DEPENDENTS)
 unique(CUST_INSUR_LTV$REGION)
 ````
 
- 12. Statistical exploration: Check average (MEAN is statistical average)
+ 12. Statistical exploration: Check average value in a numeric column (note that MEAN is the statistical average)
 
 ````
  mean(CUST_INSUR_LTV$N_OF_DEPENDENTS)
 ````
 
- 13. Statistical exploration: Check MODE (Most frequently occurring observation)
+ 13. Statistical exploration: Check MODE (i.e., the most frequently occurring observation for an attribute)
  
 ````
 x <- CUST_INSUR_LTV$N_OF_DEPENDENTS     
@@ -163,7 +163,7 @@ names(table(x))[table(x)==max(table(x))]
 
 ````
 
- 14. Statistical exploration: Check percentiles (e.g., to identify outlier limits)
+ 14. Statistical exploration: Check percentiles (this may be useful to identify outlier limits)
  
 ````
 lower_bound <- quantile(CUST_INSUR_LTV$SALARY, 0.025)
@@ -173,11 +173,12 @@ upper_bound
 
 ````
                
-15. Data exploration: Group data, filter data 
+15. Data exploration: Group data, filter data etc.
 
 ````
 CUSTBIN = aggregate(CUST_INSUR_LTV$LTV_BIN, by = list(LTV_BIN = CUST_INSUR_LTV$LTV_BIN),FUN = length)
 CUSTBIN
+
 filter(CUST_INSUR_LTV, region == “NORTHEAST”)
 CUST_INSUR_LTV %>% filter(SALARY > mean(SALARY, na.rm = TRUE))
 
