@@ -13,12 +13,12 @@ Note: In marketing, the life-time value (LTV) of a customer is an estimate of th
 relationship over its lifetime.
  
  
-# **Estimated Lab Time ** 
+# Estimated Lab Time
 
 2 hours
  
  
-# **Objectives **
+# Objectives
 
 
 In this lab, you will:
@@ -40,7 +40,7 @@ Note:
 * R, RStudio, and required libraries
 
 
-# **Task 1: Connect to RStudio client and establish database connection **
+# Task 1: Connect to RStudio client and establish database connection
 
 
 1. Point browser to RStudio Web.
@@ -99,10 +99,11 @@ ore.ls()
 ````
 
 Note: Database tables appear as ORE frames.
-  
 
-** Task 2: Explore data ** 
- 
+ 
+
+# Task 2: Explore data 
+ 
  
 7. Check class of an object (data table)
  
@@ -181,7 +182,7 @@ CUST_INSUR_LTV %>% filter(SALARY > mean(SALARY, na.rm = TRUE))
 ````
 
 
-** Task 3: Visualize data ** 
+# Task 3: Visualize data
 
  
 16. Data visualization: Plot age using box plot
