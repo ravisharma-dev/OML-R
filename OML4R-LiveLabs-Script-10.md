@@ -13,10 +13,12 @@ Note: In marketing, the life-time value (LTV) of a customer is an estimate of th
 relationship over its lifetime.
  
  
-** Estimated Lab Time: ** 
+**Estimated Lab Time ** 
 2 hours
  
-** Objectives **
+ 
+**Objectives **
+
 
 In this lab, you will:
  
