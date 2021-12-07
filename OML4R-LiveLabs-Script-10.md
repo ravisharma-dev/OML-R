@@ -236,10 +236,12 @@ Note: Attribute importance ranks attributes according to their significance in p
 ````
 prc0 <- prcomp(~  HOUSE_OWNERSHIP + N_MORTGAGES + MORTGAGE_AMOUNT + AGE + SALARY + N_OF_DEPENDENTS, data = CUST_INSUR_LTV, scale. = TRUE)
 summary(prc0)
-```` 
+````
 
 Note: Principal Component Analysis (PCA) is a technique used for exploratory data analysis, and to visualize the existing variation in a dataset that has several variables. 
- 
+
+
+ 
 **Task 5: Prepare data for model creation **
  
 23. Create row names. You can use the primary key of a database table to order an ore.frame object.   
@@ -269,6 +271,7 @@ dim(CIL.test)
 class(CIL.test) 
 ````
 
+            
 **Task 6: Build ML models **
 
 
@@ -307,6 +310,7 @@ head(select (CIL, LTV, PREDICTION))
 ````
 
 28. Validate predictions using RMSE
+
 ````
 ans <- predict(oreFit1, newdata = CIL.test, supplemental.cols = 'LTV')
 localPredictions <- ore.pull(ans)
