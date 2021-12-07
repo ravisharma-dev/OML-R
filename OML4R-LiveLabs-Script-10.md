@@ -60,13 +60,13 @@ Note: OML4R is the new name for Oracle R Enterprise.
 
 4. Connect to the 21c database and check connectivity
  
- ````
+````
 ore.connect(user="oml_user",
             conn_string="MLPDB1",
             host=“<“hostname>,
             password=“<“password>,
             all=TRUE)
- ````
+````
  
 Note: You connect to the schema. Port defaults to 1521. 
 By specifying “all = TRUE”, proxy objects are loaded for all tables in the target schema.  
@@ -74,10 +74,11 @@ Use ore.disconnect() to explicitly disconnect.
 
 5. Check if connection to database is established.
 
- ````
+````
 ore.is.connected()
- ````
-Note: ore.is.connected returns TRUE if you’re already connected to an Oracle Database 
+````
+
+ Note: ore.is.connected returns TRUE if you’re already connected to an Oracle Database 
 
 6. What tables are in the database schema we connected to?
 
@@ -98,20 +99,26 @@ Note: Database tables appear as ORE frames.
 Note: The database table appears as "ore.frame"
  
 8. Get column names in an object
- ````
+ 
+ ````
 colnames(CUST_INSUR_LTV)
  ````
-Note: The column list appears as an ordered list.
+
+ Note: The column list appears as an ordered list.
  
 9. Check object dimensions (row and column counts)
- ````
+ 
+ ````
 dim(CUST_INSUR_LTV)
  ````
-10. Check data summary in the object
- ````
+
+ 10. Check data summary in the object
+ 
+ ````
 summary(CUST_INSUR_LTV[,1:20])
  ````
-Note: You can specify one or more, or a range of columns
+
+ Note: You can specify one or more, or a range of columns
  
 11. Statistical exploration: Check min(), max(), unique() etc. for different attributes
  ````
