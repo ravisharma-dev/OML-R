@@ -133,15 +133,16 @@ unique(CUST_INSUR_LTV$REGION)
 
  12. Statistical exploration: Check average (MEAN is statistical average)
 
- ````
+````
  mean(CUST_INSUR_LTV$N_OF_DEPENDENTS)
- ````
+````
 
  13. Statistical exploration: Check MODE (Most frequently occurring observation)
  
 ````
 x <- CUST_INSUR_LTV$N_OF_DEPENDENTS     
 names(table(x))[table(x)==max(table(x))]
+
 ````
 
  14. Statistical exploration: Check percentiles (e.g., to identify outlier limits)
@@ -151,36 +152,47 @@ lower_bound <- quantile(CUST_INSUR_LTV$SALARY, 0.025)
 lower_bound
 upper_bound <- quantile(CUST_INSUR_LTV$SALARY, 0.975)
 upper_bound
+
 ````
                
 15. Data exploration: Group data, filter data 
- ````
+
+````
 CUSTBIN = aggregate(CUST_INSUR_LTV$LTV_BIN, by = list(LTV_BIN = CUST_INSUR_LTV$LTV_BIN),FUN = length)
 CUSTBIN
- ````
 filter(CUST_INSUR_LTV, region == “NORTHEAST”)
 CUST_INSUR_LTV %>% filter(SALARY > mean(SALARY, na.rm = TRUE))
- ````
+
+````
+
 **Task 3: Visualize data** 
  
 16. Data visualization: Plot age using box plot
- ```` 
+
+```` 
 boxplot(CUST_INSUR_LTV$AGE)
- ````
+````
+
 17: Data visualization: Simple plot (salary)
- ````
+
+````
 plot(CUST_INSUR_LTV$SALARY/1000)
- ````
+````
+
 18. Data visualization: See data in histogram, pie chart (TBD)
- ````
+
+````
 hist(CUST_INSUR_LTV$SALARY/1000)
- ````
+````
+
 19. Data visualization: Check outliers on a box plot
- ````
+
+````
 out <- boxplot.stats(CUST_INSUR_LTV$AGE)$out
 boxplot(CUST_INSUR_LTV$AGE, ylab = "Age")
 mtext(paste("Outliers: ", paste(unique(out), collapse = ", ")))
- ````
+````
+
 **Task 4: Perform exploratory data analysis**
  
 20. Use Attribute Importance (AI) to identify important attributes for a given dependent attribute (LTV) in the given dataset. 
