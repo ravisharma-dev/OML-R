@@ -56,7 +56,7 @@ Note: Alternatively, you can use RStudio Desktop.
 2. Connect to RStudio using credentials “oracle/<RStudio-Password-Provided>”
 
  
-3. Load ORE library 
+3. Load useful ORE libraries
 
 ````
 library(ORE)
@@ -79,10 +79,10 @@ ore.connect(user="oml_user",
             all=TRUE)
 ````
  
-Note: You connect to the schema. Port defaults to 1521. 
+Note: Your database connection is to the database schema where the data resides. The connection port defaults to 1521. 
 
-By specifying “all = TRUE”, proxy objects are loaded for all tables in the target schema.  
-Use ore.disconnect() to explicitly disconnect.
+
+By specifying “all = TRUE”, proxy objects are loaded for all tables in the target schema. You can use ore.disconnect() to explicitly disconnect the database session.
 
  
 5. Check if connection to database is established.
@@ -91,10 +91,10 @@ Use ore.disconnect() to explicitly disconnect.
 ore.is.connected()
 ````
 
- Note: ore.is.connected returns TRUE if you’re already connected to an Oracle Database 
+ Note: ore.is.connected returns TRUE if you are connected to an Oracle Database. 
 
  
-6. What tables are in the database schema we connected to?
+6. Check which tables are in the database schema you are connected to.
 
 ````
 ore.ls()
@@ -116,7 +116,7 @@ Note: Database tables appear as ORE frames.
 Note: The database table appears as "ore.frame"
  
 
- 8. Get column names in an object
+ 8. Get column names of a table
  
 ````
 colnames(CUST_INSUR_LTV)
@@ -125,19 +125,19 @@ colnames(CUST_INSUR_LTV)
  Note: The column list appears as an ordered list.
  
 
- 9. Check object dimensions (row and column counts)
+ 9. Check object dimensions (which are row and column counts)
  
 ````
 dim(CUST_INSUR_LTV)
 ````
 
- 10. Check data summary in the object
+ 10. Check data summary for a given object
  
 ````
 summary(CUST_INSUR_LTV[,1:20])
 ````
 
- Note: You can specify one or more, or a range of columns
+ Note: You can specify one or more, or a range of columns to see the summary of only those columns.
 
  
 11. Statistical exploration: Check min(), max(), unique() etc. for different attributes
