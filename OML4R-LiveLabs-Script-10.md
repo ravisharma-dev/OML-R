@@ -304,12 +304,14 @@ oreFit1$ridge
 
  Note: # Change TYPE parameter (check in ore.odmGLM doc) 
 
+
 26. Generate predictions
  
 ````
 predA = ore.predict(oreFit1, newdata = CIL.test)
 predA
 ````
+
 27. Compare actual and predicted values and validate
 
 ````
@@ -325,7 +327,8 @@ head(select (CIL, LTV, PREDICTION))
  
  Use a CLASSIFICATION Model for LTV_BIN Prediction
 
-29. Exclude highly correlated columns from the data frame
+ 
+28. Exclude highly correlated columns from the data frame
 
 ````
 CIL <- CUST_INSUR_LTV
@@ -333,7 +336,7 @@ CIL$LTV_BIN <- NULL
 dim(CIL)
 ````
 
-30. Build regression model to predict customer LTV_BIN assignment using the training data set
+29. Build regression model to predict customer LTV_BIN assignment using the training data set
 
 ````
 oreFit2 <- ore.odmDT(LTV_BIN ~ ., data = CIL.train)
@@ -349,7 +352,7 @@ head(nb.res,10)
 with(nb.res, table(LTV_BIN,PREDICTION, dnn = c("Actual","Predicted")))
 ````
 
-31. Generate predictions
+30. Generate predictions
 
 ````
 predB = ore.predict(oreFit2, newdata = CIL.test)
@@ -361,7 +364,7 @@ predB
  # Task 7: Validate predictions
  
  
-28. Validate LTV predictions using RMSE
+31. Validate LTV predictions using RMSE
 
 ````
 ans <- predict(oreFit1, newdata = CIL.test, supplemental.cols = 'LTV')
