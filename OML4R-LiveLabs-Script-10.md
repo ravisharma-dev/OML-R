@@ -1,4 +1,4 @@
-Oracle Machine Learning for R (OML4R)
+# Oracle Machine Learning for R (OML4R)
  
 Oracle Machine Learning for R (OML4R) enables you to use R (a statistical programming language) for statistical analysis, data 
 exploration, machine learning, and graphical analysis of data stored in an Oracle database. This allows you to benefit from the 
@@ -13,11 +13,12 @@ Note: In marketing, the life-time value (LTV) of a customer is an estimate of th
 relationship over its lifetime.
  
  
-**Estimated Lab Time ** 
+# **Estimated Lab Time ** 
+
 2 hours
  
  
-**Objectives **
+# **Objectives **
 
 
 In this lab, you will:
@@ -38,7 +39,9 @@ Note:
 * Oracle Database 21c, 19c, or 18c installed on-premises (or in a VM in Cloud);
 * R, RStudio, and required libraries
 
-** Task 1: Connect to RStudio client and establish database connection **
+
+# **Task 1: Connect to RStudio client and establish database connection **
+
 
 1. Point browser to RStudio Web.
 
