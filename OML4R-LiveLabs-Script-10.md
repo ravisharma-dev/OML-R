@@ -82,9 +82,9 @@ ore.is.connected()
 
 6. What tables are in the database schema we connected to?
 
- ````
+````
 ore.ls()
- ````
+````
 
 Note: Database tables appear as ORE frames.
   
@@ -92,17 +92,17 @@ Note: Database tables appear as ORE frames.
  
 7. Check class of an object (data table)
  
- ````
+````
  class(CUST_INSUR_LTV)
- ````
+````
  
 Note: The database table appears as "ore.frame"
  
 8. Get column names in an object
  
- ````
+````
 colnames(CUST_INSUR_LTV)
- ````
+````
 
  Note: The column list appears as an ordered list.
  
