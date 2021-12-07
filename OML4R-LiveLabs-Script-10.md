@@ -45,7 +45,7 @@ Note: Alternatively, you can use RStudio Desktop.
 
 2. Connect to RStudio using credentials “oracle/<RStudio-Password-Provided>”
  
-# 3. Load ORE library 
+3. Load ORE library 
 
 ````
 library(ORE)
