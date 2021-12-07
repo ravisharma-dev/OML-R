@@ -44,6 +44,7 @@ http://<ip-address>:8787
 Note: Alternatively, you can use RStudio Desktop.
 
 2. Connect to RStudio using credentials “oracle/<RStudio-Password-Provided>”
+
  
 3. Load ORE library 
 
@@ -69,9 +70,11 @@ ore.connect(user="oml_user",
 ````
  
 Note: You connect to the schema. Port defaults to 1521. 
+
 By specifying “all = TRUE”, proxy objects are loaded for all tables in the target schema.  
 Use ore.disconnect() to explicitly disconnect.
 
+ 
 5. Check if connection to database is established.
 
 ````
@@ -80,6 +83,7 @@ ore.is.connected()
 
  Note: ore.is.connected returns TRUE if you’re already connected to an Oracle Database 
 
+ 
 6. What tables are in the database schema we connected to?
 
 ````
@@ -91,6 +95,7 @@ Note: Database tables appear as ORE frames.
 
 **Task 2: Explore data** 
  
+ 
 7. Check class of an object (data table)
  
 ````
