@@ -88,6 +88,7 @@ ore.ls()
 
 Note: Database tables appear as ORE frames.
   
+
 **Task 2: Explore data** 
  
 7. Check class of an object (data table)
@@ -121,6 +122,7 @@ summary(CUST_INSUR_LTV[,1:20])
 ````
 
  Note: You can specify one or more, or a range of columns
+
  
 11. Statistical exploration: Check min(), max(), unique() etc. for different attributes
 
@@ -165,7 +167,9 @@ CUST_INSUR_LTV %>% filter(SALARY > mean(SALARY, na.rm = TRUE))
 
 ````
 
+
 **Task 3: Visualize data** 
+
  
 16. Data visualization: Plot age using box plot
 
