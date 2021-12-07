@@ -56,9 +56,9 @@ library(caTools)
 options(ore.warn.order=FALSE)
 ````
 
-# Note: OML4R is the new name for Oracle R Enterprise.
+Note: OML4R is the new name for Oracle R Enterprise.
 
-# 4. Connect to the 21c database and check connectivity
+4. Connect to the 21c database and check connectivity
  
  ````
 ore.connect(user="oml_user",
@@ -77,15 +77,15 @@ Use ore.disconnect() to explicitly disconnect.
  ````
 ore.is.connected()
  ````
-# Note: ore.is.connected returns TRUE if you’re already connected to an Oracle Database 
+Note: ore.is.connected returns TRUE if you’re already connected to an Oracle Database 
 
-# 6. What tables are in the database schema we connected to?
+6. What tables are in the database schema we connected to?
 
  ````
 ore.ls()
  ````
 
- Note: Database tables appear as ORE frames.
+Note: Database tables appear as ORE frames.
   
 **Task 2: Explore data** 
  
@@ -95,41 +95,42 @@ ore.ls()
  class(CUST_INSUR_LTV)
  ````
  
-# Note: The database table appears as "ore.frame"
+Note: The database table appears as "ore.frame"
  
-# 8. Get column names in an object
+8. Get column names in an object
  ````
 colnames(CUST_INSUR_LTV)
  ````
-# Note: The column list appears as an ordered list.
+Note: The column list appears as an ordered list.
  
-# 9. Check object dimensions (row and column counts)
+9. Check object dimensions (row and column counts)
  ````
 dim(CUST_INSUR_LTV)
  ````
-# 10. Check data summary in the object
+10. Check data summary in the object
  ````
 summary(CUST_INSUR_LTV[,1:20])
  ````
-# Note: You can specify one or more, or a range of columns
+Note: You can specify one or more, or a range of columns
  
-# 11. Statistical exploration: Check min(), max(), unique() etc. for different attributes
+11. Statistical exploration: Check min(), max(), unique() etc. for different attributes
  ````
 min(CUST_INSUR_LTV$SALARY)
 max(CUST_INSUR_LTV$AGE)
 unique(CUST_INSUR_LTV$N_OF_DEPENDENTS)
 unique(CUST_INSUR_LTV$REGION)
  ````
-# 12. Statistical exploration: Check average (MEAN is statistical average)
+
+ 12. Statistical exploration: Check average (MEAN is statistical average)
  ````
 mean(CUST_INSUR_LTV$N_OF_DEPENDENTS)
  ````
-# 13. Statistical exploration: Check MODE (Most frequently occurring observation)
+13. Statistical exploration: Check MODE (Most frequently occurring observation)
  ````
 x <- CUST_INSUR_LTV$N_OF_DEPENDENTS     
 names(table(x))[table(x)==max(table(x))]
  ````
-# 14. Statistical exploration: Check percentiles (e.g., to identify outlier limits)
+14. Statistical exploration: Check percentiles (e.g., to identify outlier limits)
  
  ````
 lower_bound <- quantile(CUST_INSUR_LTV$SALARY, 0.025)
@@ -138,7 +139,7 @@ upper_bound <- quantile(CUST_INSUR_LTV$SALARY, 0.975)
 upper_bound
  ````
                
-# 15. Data exploration: Group data, filter data 
+15. Data exploration: Group data, filter data 
  ````
 CUSTBIN = aggregate(CUST_INSUR_LTV$LTV_BIN, by = list(LTV_BIN = CUST_INSUR_LTV$LTV_BIN),FUN = length)
 CUSTBIN
@@ -146,31 +147,31 @@ CUSTBIN
 filter(CUST_INSUR_LTV, region == “NORTHEAST”)
 CUST_INSUR_LTV %>% filter(SALARY > mean(SALARY, na.rm = TRUE))
  ````
-# **Task 3: Visualize data** 
+**Task 3: Visualize data** 
  
-# 16. Data visualization: Plot age using box plot
+16. Data visualization: Plot age using box plot
  ```` 
 boxplot(CUST_INSUR_LTV$AGE)
  ````
-# 17: Data visualization: Simple plot (salary)
+17: Data visualization: Simple plot (salary)
  ````
 plot(CUST_INSUR_LTV$SALARY/1000)
  ````
-# 18. Data visualization: See data in histogram, pie chart (TBD)
+18. Data visualization: See data in histogram, pie chart (TBD)
  ````
 hist(CUST_INSUR_LTV$SALARY/1000)
  ````
-# 19. Data visualization: Check outliers on a box plot
+19. Data visualization: Check outliers on a box plot
  ````
 out <- boxplot.stats(CUST_INSUR_LTV$AGE)$out
 boxplot(CUST_INSUR_LTV$AGE, ylab = "Age")
 mtext(paste("Outliers: ", paste(unique(out), collapse = ", ")))
  ````
-# **Task 4: Perform exploratory data analysis**
+**Task 4: Perform exploratory data analysis**
  
-# 20. Use Attribute Importance (AI) to identify important attributes for a given dependent attribute (LTV) in the given dataset. 
+20. Use Attribute Importance (AI) to identify important attributes for a given dependent attribute (LTV) in the given dataset. 
  
-# AI for LTV (Exclude LTV from dataset)
+AI for LTV (Exclude LTV from dataset)
  ````
 CIL <- CUST_INSUR_LTV
 CIL$LTV <- NULL
@@ -178,27 +179,27 @@ dim(CIL)
 
 ore.odmAI(LTV_BIN ~ ., CIL)
  ````
-# 21. Use Attribute Importance (AI) to identify important attributes for a given dependent attribute (LTV_BIN) in the given dataset. 
+21. Use Attribute Importance (AI) to identify important attributes for a given dependent attribute (LTV_BIN) in the given dataset. 
 
-# AI for LTV_BIN (Exclude LTV_BIN from dataset)
+AI for LTV_BIN (Exclude LTV_BIN from dataset)
  ````
 CIL <- CUST_INSUR_LTV
 CIL$LTV_BIN <- NULL
 dim(CIL)
 ore.odmAI(LTV ~ ., CIL)
  ````
-# Note: Attribute importance ranks attributes according to their significance in predicting a target. 
+Note: Attribute importance ranks attributes according to their significance in predicting a target. 
  
-# 22. Perform principal component analysis (PCA)
+22. Perform principal component analysis (PCA)
  ````
 prc0 <- prcomp(~  HOUSE_OWNERSHIP + N_MORTGAGES + MORTGAGE_AMOUNT + AGE + SALARY + N_OF_DEPENDENTS, data = CUST_INSUR_LTV, scale. = TRUE)
 summary(prc0)
  ```` 
-# Note: Principal Component Analysis (PCA) is a technique used for exploratory data analysis, and to visualize the existing variation in a dataset that has several variables. 
+Note: Principal Component Analysis (PCA) is a technique used for exploratory data analysis, and to visualize the existing variation in a dataset that has several variables. 
  
 **Task 5: Prepare data for model creation **
  
-# 23. Create row names. You can use the primary key of a database table to order an ore.frame object.   
+23. Create row names. You can use the primary key of a database table to order an ore.frame object.   
  ````
 set.seed(1)
 head(CUST_INSUR_LTV)
@@ -206,9 +207,9 @@ CIL <- CUST_INSUR_LTV
 row.names(CIL) <- CIL$CUST_ID
 head(row.names(CIL))
  ````
-#Note: The data in an Oracle Database table is not necessarily ordered. For some R operations, ordering is useful. By ordering an #ore.frame, you are able to index the ore.frame object by using either integer or character indexes. Using an ordered ore.frame object #that is a proxy for a SQL query can be time-consuming for a large data set. Therefore, OML4R attempts to create ordered ore.frame #objects by default.
+Note: The data in an Oracle Database table is not necessarily ordered. For some R operations, ordering is useful. By ordering an #ore.frame, you are able to index the ore.frame object by using either integer or character indexes. Using an ordered ore.frame object #that is a proxy for a SQL query can be time-consuming for a large data set. Therefore, OML4R attempts to create ordered ore.frame #objects by default.
 
-# 24. Partition dataset for training and testing. Split the dataset into two buckets (training data set (~70%), and testing data set (~30%))
+24. Partition dataset for training and testing. Split the dataset into two buckets (training data set (~70%), and testing data set (~30%))
  ````
 set.seed(1) 
 sampleSize <- 4600 
@@ -221,12 +222,12 @@ CIL.test <- CIL[group==TRUE,]
 dim(CIL.test) 
 class(CIL.test) 
  ````
-# **Task 6: Build ML models **
+**Task 6: Build ML models **
 
 
-# Use a REGRESSION Model for LTV Prediction
+Use a REGRESSION Model for LTV Prediction
 
-# 25. Build regression model to predict customer LTV using the training data set
+25. Build regression model to predict customer LTV using the training data set
  ````
 oreFit1 <- ore.odmGLM(LTV ~ N_MORTGAGES + MORTGAGE_AMOUNT + N_OF_DEPENDENTS, data = CIL.train, ridge=TRUE)
 oreFit1 %>% print()
@@ -238,12 +239,12 @@ oreFit1$ridge
  ````
 Note: # Change TYPE parameter (check in ore.odmGLM doc) 
 
-# 26. Generate predictions
+26. Generate predictions
  ````
 predA = ore.predict(oreFit1, newdata = CIL.test)
 predA
  ````
-# 27. Compare actual and predicted values and validate
+27. Compare actual and predicted values and validate
  ````
 oreFit1 <- ore.odmGLM(LTV ~ N_MORTGAGES + MORTGAGE_AMOUNT + N_OF_DEPENDENTS, data = CIL.train, ridge=TRUE)
 CIL <- CUST_INSUR_LTV
@@ -253,7 +254,7 @@ head(CIL)
 library(OREdplyr)
 head(select (CIL, LTV, PREDICTION))
  ````
-# 28. Validate predictions using RMSE
+28. Validate predictions using RMSE
  ````
 ans <- predict(oreFit1, newdata = CIL.test, supplemental.cols = 'LTV')
 localPredictions <- ore.pull(ans)
@@ -262,20 +263,20 @@ ore.rmse <- function (pred, obs) {
 }
 ore.rmse(localPredictions$PREDICTION, localPredictions$LTV)
  ````
-#Mean square error is a useful way to determine the extent to which a regression model is capable of integrating a dataset.
-#The larger the difference indicates a larger gap between the predicted and observed values, which means poor regression model fit. #In the same way, the smaller RMSE that indicates the better the model.
-#Based on RMSE we can compare the two different models with each other and be able to identify which model fits the data better.
+Mean square error is a useful way to determine the extent to which a regression model is capable of integrating a dataset.
+The larger the difference indicates a larger gap between the predicted and observed values, which means poor regression model fit. #In the same way, the smaller RMSE that indicates the better the model.
+Based on RMSE we can compare the two different models with each other and be able to identify which model fits the data better.
 
 
-# Use a CLASSIFICATION Model for LTV_BIN Prediction
+Use a CLASSIFICATION Model for LTV_BIN Prediction
 
-# 29. Exclude highly correlated columns from the data frame
+29. Exclude highly correlated columns from the data frame
  ````
 CIL <- CUST_INSUR_LTV
 CIL$LTV_BIN <- NULL
 dim(CIL)
  ````
-# 30. Build regression model to predict customer LTV_BIN assignment using the training data set
+30. Build regression model to predict customer LTV_BIN assignment using the training data set
  ````
 oreFit2 <- ore.odmDT(LTV_BIN ~ ., data = CIL.train)
 oreFit2 %>% print()
@@ -289,12 +290,12 @@ nb.res <- predict (nb, CIL.test, "LTV_BIN")
 head(nb.res,10)
 with(nb.res, table(LTV_BIN,PREDICTION, dnn = c("Actual","Predicted")))
  ````
-# 31. Generate predictions
+31. Generate predictions
  ````
 predB = ore.predict(oreFit2, newdata = CIL.test)
 predB
  ````
-#32. Produce confusion matrix
+32. Produce confusion matrix
  ````
 confusion.matrix <- table(test$LTV_BIN, predB$PREDICTION)
 dim(test$LTV_BIN)
@@ -304,4 +305,5 @@ class(predB)
 confusion.matrix
 summary(confusion.matrix)
  ````
-# Observe and evaluate accuracy of predictions
+
+ 33. Observe and evaluate accuracy of predictions
