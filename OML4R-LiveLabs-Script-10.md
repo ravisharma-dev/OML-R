@@ -5,10 +5,12 @@ exploration, machine learning, and graphical analysis of data stored in an Oracl
 simplicity of R and the power of Oracle Database without the need to deal with the complexities of sourcing, moving, and securing 
 data.
  
+ 
 In this workshop, you will use a dataset representing 15,000 customers of an insurance company. Each customer has about 30 
 attributes, and the goal is to train the model to predict a given customer's life-time value (LTV) using regression algorithms, and 
 alternatively, using binned LTV categories to use classification algorithms to classify customers as asLOW, MEDIUM, HIGH, or VERY # HIGH LTV. 
  
+ 
 Note: In marketing, the life-time value (LTV) of a customer is an estimate of the net profit attributable to a given customer 
 relationship over its lifetime.
  
