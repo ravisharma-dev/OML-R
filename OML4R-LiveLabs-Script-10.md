@@ -98,7 +98,8 @@ Note: Database tables appear as ORE frames.
  
 Note: The database table appears as "ore.frame"
  
-8. Get column names in an object
+
+ 8. Get column names in an object
  
 ````
 colnames(CUST_INSUR_LTV)
@@ -106,45 +107,51 @@ colnames(CUST_INSUR_LTV)
 
  Note: The column list appears as an ordered list.
  
-9. Check object dimensions (row and column counts)
+
+ 9. Check object dimensions (row and column counts)
  
- ````
+````
 dim(CUST_INSUR_LTV)
- ````
+````
 
  10. Check data summary in the object
  
- ````
+````
 summary(CUST_INSUR_LTV[,1:20])
- ````
+````
 
  Note: You can specify one or more, or a range of columns
  
 11. Statistical exploration: Check min(), max(), unique() etc. for different attributes
- ````
+
+````
 min(CUST_INSUR_LTV$SALARY)
 max(CUST_INSUR_LTV$AGE)
 unique(CUST_INSUR_LTV$N_OF_DEPENDENTS)
 unique(CUST_INSUR_LTV$REGION)
- ````
+````
 
  12. Statistical exploration: Check average (MEAN is statistical average)
+
+ ````
+ mean(CUST_INSUR_LTV$N_OF_DEPENDENTS)
  ````
-mean(CUST_INSUR_LTV$N_OF_DEPENDENTS)
- ````
-13. Statistical exploration: Check MODE (Most frequently occurring observation)
- ````
+
+ 13. Statistical exploration: Check MODE (Most frequently occurring observation)
+ 
+````
 x <- CUST_INSUR_LTV$N_OF_DEPENDENTS     
 names(table(x))[table(x)==max(table(x))]
- ````
-14. Statistical exploration: Check percentiles (e.g., to identify outlier limits)
+````
+
+ 14. Statistical exploration: Check percentiles (e.g., to identify outlier limits)
  
- ````
+````
 lower_bound <- quantile(CUST_INSUR_LTV$SALARY, 0.025)
 lower_bound
 upper_bound <- quantile(CUST_INSUR_LTV$SALARY, 0.975)
 upper_bound
- ````
+````
                
 15. Data exploration: Group data, filter data 
  ````
