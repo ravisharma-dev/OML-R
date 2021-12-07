@@ -211,7 +211,8 @@ boxplot(CUST_INSUR_LTV$AGE, ylab = "Age")
 mtext(paste("Outliers: ", paste(unique(out), collapse = ", ")))
 ````
 
-** Task 4: Perform exploratory data analysis **
+       
+# Task 4: Perform exploratory data analysis
 
  
 20. Use Attribute Importance (AI) to identify important attributes for a given dependent attribute (LTV) in the given dataset. 
@@ -251,8 +252,7 @@ Note: Principal Component Analysis (PCA) is a technique used for exploratory dat
 
 
  
-** Task 5: Prepare data for model creation **
- 
+# Task 5: Prepare data for model creation 
 
 23. Create row names. You can use the primary key of a database table to order an ore.frame object.   
 
@@ -282,7 +282,7 @@ class(CIL.test)
 ````
 
             
-** Task 6: Build ML models **
+# Task 6: Build ML models
 
 
 Use a REGRESSION Model for LTV Prediction
@@ -319,23 +319,8 @@ library(OREdplyr)
 head(select (CIL, LTV, PREDICTION))
 ````
 
-28. Validate predictions using RMSE
-
-````
-ans <- predict(oreFit1, newdata = CIL.test, supplemental.cols = 'LTV')
-localPredictions <- ore.pull(ans)
-ore.rmse <- function (pred, obs) {
-  sqrt(mean(pred-obs)^2)
-}
-ore.rmse(localPredictions$PREDICTION, localPredictions$LTV)
-````
-
-Mean square error is a useful way to determine the extent to which a regression model is capable of integrating a dataset.
-The larger the difference indicates a larger gap between the predicted and observed values, which means poor regression model fit. #In the same way, the smaller RMSE that indicates the better the model.
-Based on RMSE we can compare the two different models with each other and be able to identify which model fits the data better.
-
-
-Use a CLASSIFICATION Model for LTV_BIN Prediction
+ 
+ Use a CLASSIFICATION Model for LTV_BIN Prediction
 
 29. Exclude highly correlated columns from the data frame
 
@@ -368,7 +353,29 @@ predB = ore.predict(oreFit2, newdata = CIL.test)
 predB
 ````
 
-32. Produce confusion matrix
+          
+ 
+ # Task 7: Validate predictions
+ 
+ 
+28. Validate LTV predictions using RMSE
+
+````
+ans <- predict(oreFit1, newdata = CIL.test, supplemental.cols = 'LTV')
+localPredictions <- ore.pull(ans)
+ore.rmse <- function (pred, obs) {
+  sqrt(mean(pred-obs)^2)
+}
+ore.rmse(localPredictions$PREDICTION, localPredictions$LTV)
+````
+
+Mean square error is a useful way to determine the extent to which a regression model is capable of integrating a dataset.
+The larger the difference indicates a larger gap between the predicted and observed values, which means poor regression model fit. #In the same way, the smaller RMSE that indicates the better the model.
+Based on RMSE we can compare the two different models with each other and be able to identify which model fits the data better.
+
+
+
+32. Produce confusion matrix for LTV_BIN predictions
 
 ````
 confusion.matrix <- table(test$LTV_BIN, predB$PREDICTION)
