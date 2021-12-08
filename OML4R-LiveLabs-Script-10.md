@@ -194,27 +194,28 @@ CUST_INSUR_LTV %>% filter(SALARY > mean(SALARY, na.rm = TRUE))
 
 # Task 3: Visualize data
 
- In this section we will try to visualize some of the data provided in the dataset. This includes drawing plots, graphs, and histograms, etc.
+In this section we will try to visualize some of the data provided in the dataset. This includes drawing plots, graphs, and histograms, etc.
+ 
  
-16. Data visualization: Plot the age attribute using box plot.
+16. Data visualization: Plot the age attribute using box plot. This can help see the concentration of customers in specific age bands and relative number of outliers, etc.
 
 ```` 
 boxplot(CUST_INSUR_LTV$AGE)
 ````
 
-17: Data visualization: Simple plot (salary)
+17: Data visualization: Simple plot (salary). 
 
 ````
 plot(CUST_INSUR_LTV$SALARY/1000)
 ````
 
-18. Data visualization: See data in histogram, pie chart (TBD)
+18. Data visualization: Histograms help see distribution of data / attributes in range bands. R/ORE transparently identifies what it sees as appropriate band ranges. See data in histogram, pie chart (TBD)
 
 ````
 hist(CUST_INSUR_LTV$SALARY/1000)
 ````
 
-19. Data visualization: Check outliers on a box plot
+19. Data visualization: Check outliers on a box plot. 
 
 ````
 out <- boxplot.stats(CUST_INSUR_LTV$AGE)$out
