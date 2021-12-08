@@ -6,11 +6,10 @@ simplicity of R and the power of Oracle Database without the need to deal with t
 data.
  
  
-In this workshop, you will use a dataset representing 15,000 customers of an insurance company. Each customer has about 30 
+In this workshop, you will use a dataset representing about 15,000 customers of an insurance company. Each customer has about 30 
 attributes, and the goal is to train the model to predict a given customer's life-time value (LTV) using regression algorithms, and 
-alternatively, using binned LTV categories to use classification algorithms to classify customers as asLOW, MEDIUM, HIGH, or VERY # HIGH LTV. 
- 
- 
+additionally, use classification algorithms to classify customers as as LOW, MEDIUM, HIGH, or VERY # HIGH LTV (using binned LTV categories). 
+  
 Note: In marketing, the life-time value (LTV) of a customer is an estimate of the net profit attributable to a given customer 
 relationship over its lifetime.
  
@@ -26,16 +25,17 @@ relationship over its lifetime.
 In this lab, you will:
  
 * Establish a connection from RStudio to your Oracle Database instance to prepare, explore, and visualize data.
-* Use R for exploratory data analysis, data visualization, data organization (bucketing), 
-* Use Algorithm Selection, Feature Selection, Model Selection, and Model Tuning
-* Use an OML4R CLASSIFICATION model for LTV_BIN assignment
-* Use an OML4R REGRESSION model for estimating customer life-time value (LTV)
-* Build models explicitly using OML4R API
+* Use R for exploratory data analysis, data visualization, data organization (bucketing of data in train and test buckets), 
+* Use Attribute Importance(AI), Principle Component Analysis, Model Building, and Model Validations techniques
+* Use an OML4R REGRESSION models for estimating customer life-time value (LTV)
+* Use an OML4R CLASSIFICATION models for LTV_BIN assignment for unassigned customers
+* Validate predictions using RMSE (Root Mean Squared Error) and Confusion Matrix methods
 
 Note:
 * AutoML is currently not available for OML4R (it is only available for OML4Py)
 * AutoML UI is currently available for ADB ONLY
 * OML4R is currently not available for ADB
+* Therefore, we will not be using AutoML in this lab
 
 ** Prerequisites **
 * Oracle Database 21c, 19c, or 18c installed on-premises (or in a VM in Cloud);
