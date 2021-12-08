@@ -45,7 +45,7 @@ Note:
 # Task 1: Connect to RStudio client and establish database connection
 
 
-1. Point browser to RStudio Web.
+1. RStudio provides a GUI/BUI as an IDE for R. RStudio has been pre-configured on your database server. Point browser to RStudio Web to connect.
 
 ````
 http://<ip-address>:8787
@@ -53,10 +53,10 @@ http://<ip-address>:8787
 
 Note: Alternatively, you can use RStudio Desktop.
 
-2. Connect to RStudio using credentials “oracle/<RStudio-Password-Provided>”
+2. Connect to RStudio. <New details to be included here.>
 
  
-3. Load useful ORE libraries
+3. Load useful ORE libraries. 
 
 ````
 library(ORE)
