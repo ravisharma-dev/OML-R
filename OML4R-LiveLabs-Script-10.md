@@ -51,12 +51,18 @@ Note:
 http://<ip-address>:8787
 ````
 
-Note: Alternatively, you can use RStudio Desktop.
+Note: Alternatively, you can use RStudio Desktop, if you prefer.
 
 2. Connect to RStudio. <New details to be included here.>
 
  
-3. Load useful ORE libraries. 
+3. Load useful ORE libraries. The ORE library is a package that contains many useful R functions. 
+ 
+ The standard dplyr R package provides grammar of data manipulation, which gives a consistent set of verbs that help you solve the most common data manipulation challenges
+
+ OREdplyr is an overloaded package provides much of the dplyr functionality extending the ORE transparency layer for in-database execution of dplyr function calls. OREdplyr allows users to avoid costly movement of data while scaling to larger data volumes because operations are not constrained by R client memory, the latency of data movement, or single-threaded execution, but leverage Oracle Database as a high performance compute engine. 
+ 
+ The caTools package contains several basic utility functions including: moving (rolling, running) window statistic functions, read/write for GIF and ENVI binary files, fast calculation of AUC, LogitBoost classifier, base64 encoder/decoder, round-off-error-free sum and cumsum, etc.
 
 ````
 library(ORE)
@@ -69,7 +75,7 @@ options(ore.warn.order=FALSE)
 
 Note: OML4R is the new name for Oracle R Enterprise.
 
-4. Connect to the 21c database and check connectivity
+4. A Oracle 21c database instance (MLPDB1) has been provisioned for your to run this lab. Connect to the provided database.
  
 ````
 ore.connect(user="oml_user",
@@ -94,7 +100,7 @@ ore.is.connected()
  Note: ore.is.connected returns TRUE if you are connected to an Oracle Database. 
 
  
-6. Check which tables are in the database schema you are connected to.
+6. Use the ore.ls function call to check which tables are in the database schema you are connected to.
 
 ````
 ore.ls()
@@ -105,7 +111,8 @@ Note: Database tables appear as ORE frames.
  
 
 # Task 2: Explore data 
- 
+
+ In this section, we will do basic data exploration, looking at database objects, and understanding the data to some extent.
  
 7. Check class of an object (data table)
  
@@ -187,8 +194,9 @@ CUST_INSUR_LTV %>% filter(SALARY > mean(SALARY, na.rm = TRUE))
 
 # Task 3: Visualize data
 
+ In this section we will try to visualize some of the data provided in the dataset. This includes drawing plots, graphs, and histograms, etc.
  
-16. Data visualization: Plot age using box plot
+16. Data visualization: Plot the age attribute using box plot.
 
 ```` 
 boxplot(CUST_INSUR_LTV$AGE)
