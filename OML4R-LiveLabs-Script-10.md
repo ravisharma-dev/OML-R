@@ -227,9 +227,9 @@ mtext(paste("Outliers: ", paste(unique(out), collapse = ", ")))
 # Task 4: Perform exploratory data analysis
 
  
-20. Use Attribute Importance (AI) to identify important attributes for a given dependent attribute (LTV) in the given dataset. 
+20. Use Attribute Importance (ore.odmAI) function to identify important attributes (listed in order of importance) for a given dependent attribute (LTV) in the given dataset. To do this we first exclude the most significant dependent attribute from the data frame.
  
-AI for LTV (Exclude LTV from dataset)
+
 
 ````
 CIL <- CUST_INSUR_LTV
@@ -239,6 +239,8 @@ dim(CIL)
 ore.odmAI(LTV_BIN ~ ., CIL)
 ````
 
+Note: The output lists all the important attributes and their relative influce on the target attribute. Since LTV_BIN is directly related to LTV for a customers, we excluded LTV from the data frame before running ore.odmAI.
+           
 21. Use Attribute Importance (AI) to identify important attributes for a given dependent attribute (LTV_BIN) in the given dataset. 
 
 AI for LTV_BIN (Exclude LTV_BIN from dataset)
